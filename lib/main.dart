@@ -142,5 +142,114 @@ class StarIcon extends StatelessWidget {
     );
   }
 }
+class BioSection extends StatelessWidget {
+  const BioSection(
+      {super.key,
+      required this.ladyImage,
+      required this.username,
+      required this.location,
+      required this.followButton});
+
+  final String ladyImage;
+  final String username;
+  final String location;
+  final String followButton;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 15.0),
+      child: Row(
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 30.0,
+                  backgroundImage: AssetImage(ladyImage),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(username,
+                          style: const TextStyle(
+                              fontSize: 16.0, fontWeight: FontWeight.bold)),
+                      Row(
+                        children: [
+                          const Icon(Icons.location_on,
+                              size: 16.0, color: Colors.red),
+                          Text(
+                            location,
+                            style: const TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Row(
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  // print here
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  backgroundColor: Colors.red.shade700,
+                  minimumSize: const Size(50.0, 45.0),
+                ),
+                child: Text(followButton,
+                    style: const TextStyle(color: Colors.white)),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+class Ingredients extends StatelessWidget {
+  const Ingredients(
+      {super.key, required this.ingredients, required this.items});
+
+  final String ingredients;
+  final String items;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+        padding: const EdgeInsets.only(top: 20.0),
+        child: Column(
+          children: [
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Text(
+                ingredients,
+                style: const TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                items,
+                style: const TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.grey,
+                ),
+              )
+            ]),
+          ],
+        ));
+  }
+}
+
 
 
