@@ -55,7 +55,15 @@ class MyHomePage extends StatelessWidget {
                 ImageSection(
                     image: 'Images/Dish.png',
                     playImage: 'Images/Play button.png'),
-              
+                StarIcon(ratings: '4,5', reviews: '(300 Reviews)'),
+                BioSection(
+                  ladyImage: 'Images/girl.png',
+                  username: 'Roberta Anny',
+                  location: 'Bali, Indonesia',
+                  followButton: 'Follow',
+                ),
+                Ingredients(ingredients: 'Ingredients', items: '5 Items'),
+                ItemSection()
               ],
             )));
   }
@@ -79,6 +87,7 @@ class LeadingText extends StatelessWidget {
     ]);
   }
 }
+
 class ImageSection extends StatelessWidget {
   const ImageSection({super.key, required this.image, required this.playImage});
 
@@ -108,6 +117,7 @@ class ImageSection extends StatelessWidget {
     );
   }
 }
+
 class StarIcon extends StatelessWidget {
   const StarIcon({super.key, required this.ratings, required this.reviews});
 
@@ -142,6 +152,7 @@ class StarIcon extends StatelessWidget {
     );
   }
 }
+
 class BioSection extends StatelessWidget {
   const BioSection(
       {super.key,
@@ -217,6 +228,7 @@ class BioSection extends StatelessWidget {
     );
   }
 }
+
 class Ingredients extends StatelessWidget {
   const Ingredients(
       {super.key, required this.ingredients, required this.items});
@@ -251,5 +263,88 @@ class Ingredients extends StatelessWidget {
   }
 }
 
+class ItemSection extends StatelessWidget {
+  const ItemSection({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return const Column(children: [
+      ItemList(
+          itemImage: 'Images/Tea.png',
+          itemName: 'Bread',
+          itemWeight: '200g'),
+      ItemList(
+          itemImage: 'Images/Burger.png',
+          itemName: 'Egg',
+          itemWeight: '200g'),
+      ItemList(
+          itemImage: 'Images/Tea.png',
+          itemName: 'Milk',
+          itemWeight: '200g')
+    ]);
+  }
+}
 
+class ItemList extends StatelessWidget {
+  const ItemList(
+      {super.key,
+      required this.itemImage,
+      required this.itemName,
+      required this.itemWeight});
+
+  final String itemImage;
+  final String itemName;
+  final String itemWeight;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0),
+      child: Container(
+        padding: const EdgeInsets.only(
+            top: 10.0, left: 15.0, bottom: 10.0, right: 10.0),
+        decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 217, 217, 217),
+            borderRadius: BorderRadius.circular(8.0)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8.0)),
+                  child: Image.asset(
+                    itemImage,
+                    height: 50.0,
+                    width: 50.0,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10.0,
+                ),
+                Text(
+                  itemName,
+                  style: const TextStyle(
+                      fontSize: 16.0,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            Row(children: [
+              Text(
+                itemWeight,
+                style: const TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.grey,
+                ),
+              )
+            ]),
+          ],
+        ),
+      ),
+    );
+  }
+}
