@@ -47,3 +47,31 @@ class MyHomePage extends StatelessWidget {
             )
           ],
         ),
+        body: Container(
+            margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+            child: const Column(
+              children: [
+                LeadingText(),
+                
+            )));
+  }
+}
+
+class LeadingText extends StatelessWidget {
+  const LeadingText({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(children: [
+      Text(
+        'How to make french toast',
+        softWrap: true,
+        style: TextStyle(
+          fontFamily: 'Poppins',
+          fontSize: 26.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ]);
+  }
+}
