@@ -52,7 +52,11 @@ class MyHomePage extends StatelessWidget {
             child: const Column(
               children: [
                 LeadingText(),
-                
+                ImageSection(
+                    image: 'Images/Dish.png',
+                    playImage: 'Images/Play button.png'),
+              
+              ],
             )));
   }
 }
@@ -75,3 +79,33 @@ class LeadingText extends StatelessWidget {
     ]);
   }
 }
+class ImageSection extends StatelessWidget {
+  const ImageSection({super.key, required this.image, required this.playImage});
+
+  final String image;
+  final String playImage;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10.0),
+          child: Image.asset(
+            image,
+            width: 400.0,
+            height: 200.0,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Image.asset(
+          playImage,
+          width: 50.0,
+          height: 50.0,
+        )
+      ],
+    );
+  }
+}
+
