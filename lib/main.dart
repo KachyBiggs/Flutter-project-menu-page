@@ -108,4 +108,39 @@ class ImageSection extends StatelessWidget {
     );
   }
 }
+class StarIcon extends StatelessWidget {
+  const StarIcon({super.key, required this.ratings, required this.reviews});
+
+  final String ratings;
+  final String reviews;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 15.0),
+      child: Row(children: [
+        const Icon(
+          Icons.star,
+          color: Colors.orangeAccent,
+          size: 14,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+          child: Text(ratings,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Poppins',
+              )),
+        ),
+        Text(reviews,
+            style: const TextStyle(
+              fontSize: 14,
+              color: Colors.grey,
+            )),
+      ]),
+    );
+  }
+}
+
 
